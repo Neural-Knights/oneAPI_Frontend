@@ -1,14 +1,16 @@
 import Image from "next/image";
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 
 const Contact = () => {
 	const [open, setOpen] = useState<boolean>(true);
-	const namee: any = useState({ namee: "" });
+	const [namee, setNamee]: any = useState({ namee: "" });
 	const email: any = useState({ email: "" });
-	const message: any = useState({ message: "" });
 	const cont = () => {
-		setOpen(!open);
-		alert("Your message has been sent. We will contact you soon.");
+		if (namee == "" || email?.includes("@gmail.com" || ".edu.in")) {
+			setOpen(!open);
+			setNamee("");
+			alert("Your message has been sent. We will contact you soon.");
+		}
 	};
 	return (
 		<div
@@ -29,9 +31,10 @@ const Contact = () => {
 					height="500"
 				/>
 			</div>
-			{open && (
+			{open ? (
 				<form
 					action="https://formsubmit.co/hacksapne@gmail.com"
+					method="POST"
 					className="flex flex-col lg:justify-center lg:items-center space-y-8 w-full"
 				>
 					<div className="flex flex-col justify-center mx-4 lg:mx-0 lg:flex-none">
@@ -51,7 +54,7 @@ const Contact = () => {
 							Email
 						</h2>
 						<input
-							type="text"
+							type="email"
 							name="email"
 							required
 							id=""
@@ -69,6 +72,13 @@ const Contact = () => {
 							id=""
 							className="border-2 border-gray-500 rounded-[22px] p-3 pl-4 bg-0-white lg:pr-52 pr-[28%] pb-36"
 						/>
+						<input type="hidden" name="_subject" value="New submission!" />
+						<input type="hidden" name="_cc" value="anujmalviya850@gmail.com" />
+						<input
+							type="hidden"
+							name="_autoresponse"
+							value="Hi! Thank You For Reaching To Neural Knights"
+						/>
 					</div>
 					<button
 						onClick={cont}
@@ -78,6 +88,12 @@ const Contact = () => {
 						Send
 					</button>
 				</form>
+			) : (
+				<div className="flex flex-col justify-center mx-4 lg:mx-0 lg:flex-none">
+					<h2 className="font-semibold lg:text-2xl text-gray-700 ml-1 mb-1">
+						Thank you
+					</h2>
+				</div>
 			)}
 		</div>
 	);
