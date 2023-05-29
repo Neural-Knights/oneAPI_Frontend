@@ -1,7 +1,13 @@
+import { useLog } from "@/context/Landing";
 import Image from "next/image";
 import React from "react";
 
+interface loginn {
+	signup: () => void;
+}
+
 const HeroSection = () => {
+	const { signup } = useLog() as loginn;
 	return (
 		<div className="font-popsans">
 			<div className="flex justify-between lg:mx-24 pl-6 lg:pl-0 pt-16">
@@ -19,7 +25,10 @@ const HeroSection = () => {
 					<h2 className="bg-0-Lprimary p-2 px-3 rounded-3xl leading-[42px]">
 						Understand The Concepts Faster With Modern learning Techniques
 					</h2>
-					<button className="flex items-center justify-center w-full text-xl font-bold">
+					<button
+						onClick={signup}
+						className="flex items-center justify-center w-full text-xl font-bold"
+					>
 						<h3 className="border-2 flex border-black rounded-3xl p-2 px-4 hover:bg-0-black hover:text-0-white w-fit">
 							Enroll Now{" "}
 							<Image

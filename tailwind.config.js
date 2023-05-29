@@ -9,6 +9,7 @@ module.exports = {
 		extend: {
 			fontFamily: {
 				popsans: ['"Poppins"', "sans-serif"],
+				poly: ["Poly", "serif"],
 			},
 			colors: [
 				{

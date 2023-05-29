@@ -1,19 +1,42 @@
-import About from "@/components/Landing_About/About";
-import Contact from "@/components/Landing_Contact/Contact";
-import Features from "@/components/Landing_Features/Features";
-import Footer from "@/components/Landing_Footer/Footer";
-import HeroSection from "@/components/Landing_Hero/HeroSection";
-import Navbar from "@/components/Landing_Nav/Navbar";
+import Navbar from "@/components/Dashboard_Nav/Navbar";
+import React from "react";
+import type { NextPage, GetServerSideProps } from "next";
+import { getSession } from "next-auth/react";
 
-export default function Home() {
-	return (
-		<div className="bg-0-white scroll-smooth overflow-x-auto">
-			<Navbar />
-			<HeroSection />
-			<About />
-			<Features />
-			<Contact />
-			<Footer />
-		</div>
-	);
-}
+const Home: NextPage = ({ session }: any) => {
+	if (session) {
+		return (
+			<div>
+				<Navbar />
+			</div>
+		);
+	} else {
+		return (
+			<div>
+				<h1 className="w-full h-full flex justify-center items-center">
+					Sorry To Say <br /> Some Error Occured
+				</h1>
+			</div>
+		);
+	}
+};
+
+export const getServerSideProps: GetServerSideProps = async ({ req }) => {
+	const session = await getSession({ req });
+
+	if (!session) {
+		return {
+			redirect: {
+				destination: "/authenticate",
+				permanent: false,
+			},
+		};
+	}
+	return {
+		props: {
+			session,
+		},
+	};
+};
+
+export default Home;
