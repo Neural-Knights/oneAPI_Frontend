@@ -1,13 +1,17 @@
-import Navbar from "@/components/Dashboard_Nav/Navbar";
+import Navbar from "@/components/Dashboard_Header/Navbar";
 import React from "react";
 import type { NextPage, GetServerSideProps } from "next";
 import { getSession } from "next-auth/react";
+import Header from "@/components/Dashboard_Header/Header";
 
 const Home: NextPage = ({ session }: any) => {
 	if (session) {
 		return (
-			<div>
+			<div className="bg-0-Dprimary h-[100vh]">
 				<Navbar />
+				<div className="">
+					<Header />
+				</div>
 			</div>
 		);
 	} else {
