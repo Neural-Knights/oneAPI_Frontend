@@ -22,7 +22,7 @@ module.exports = {
 					"Rcolor-5": "#FFD597",
 					black: "#000",
 					white: "#F7F4EA",
-					gray: "#ccc",
+					gray: "#777",
 					Dprimary: "#5840BA",
 					Dsecondary: "#F2F2F2",
 					DOrange: "#FEBC3A",

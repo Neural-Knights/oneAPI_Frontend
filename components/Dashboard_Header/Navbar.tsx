@@ -1,17 +1,25 @@
 import React, { useState } from "react";
 import { signOut } from "next-auth/react";
 import Image from "next/image";
+import { useLog } from "@/context/Landing";
+
+interface detail {
+	name: string;
+	email: string;
+	image: string;
+}
 
 const Navbar = () => {
 	const out = () => {
 		signOut();
 	};
 	const [show, setShow] = useState<boolean>(false);
+	const { image, name } = useLog() as detail;
 	return (
 		<header className="flex w-full items-center justify-between px-2">
 			<div className="flex items-center pl-8">
 				<Image
-					src="/logolight.svg"
+					src={"/logolight.svg"}
 					alt="neural logo"
 					className=""
 					width={82}
@@ -22,7 +30,7 @@ const Navbar = () => {
 					<input
 						type="text"
 						placeholder="Search"
-						className="bg-0-white placeholder:text-[#777] rounded-full w-64 h-10 pl-4 pr-8 py-2 outline-none"
+						className="bg-0-white placeholder:text-0-gray rounded-full w-64 h-10 pl-4 pr-8 py-2 outline-none"
 					/>
 					<Image
 						src="/search.svg"
@@ -40,9 +48,9 @@ const Navbar = () => {
 					className="w-28 h-12 overflow-hidden flex items-center justify-between rounded-full"
 				>
 					<Image
-						src="/logolight.svg"
-						alt="neural logo"
-						className="w-10 h-10 rounded-full ml-3"
+						src={typeof image == undefined ? "/logolight.svg" : image}
+						alt={typeof name == undefined ? "neural logo" : name}
+						className="w-10 h-10 rounded-full ml-5"
 						width={60}
 						height={60}
 					/>
@@ -62,13 +70,15 @@ const Navbar = () => {
 				>
 					<div className="flex items-center space-x-2 p-2">
 						<Image
-							src="/logo.svg"
-							alt="plchldr.co"
+							src={typeof image == undefined ? "/logolight.svg" : image}
+							alt={typeof name == undefined ? "neural logo" : name}
 							width={40}
 							height={40}
 							className="h-9 w-9 rounded-full"
 						/>
-						<div className="font-medium">Neural Knights</div>
+						<div className="font-medium">
+							{typeof name == undefined ? "neural knights" : name}
+						</div>
 					</div>
 
 					<div className="flex flex-col space-y-3 p-2">

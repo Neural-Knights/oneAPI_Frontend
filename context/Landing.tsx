@@ -1,8 +1,13 @@
+import { useSession } from "next-auth/react";
 import { createContext, useContext, useState } from "react";
 
 const LogContext = createContext({});
 
 const LogProvider = ({ children }: any) => {
+	const session = useSession();
+	const name = session.data?.user?.name as string;
+	const email = session.data?.user?.email as string;
+	const image = session.data?.user?.image as string;
 	const [log, setLog] = useState<number>(0);
 	const [currentUser, setCurrentUser] = useState<object>([]);
 	const signup = () => {
@@ -13,7 +18,17 @@ const LogProvider = ({ children }: any) => {
 	};
 	return (
 		<LogContext.Provider
-			value={{ log, setLog, signup, login, currentUser, setCurrentUser }}
+			value={{
+				log,
+				setLog,
+				signup,
+				login,
+				currentUser,
+				setCurrentUser,
+				name,
+				email,
+				image,
+			}}
 		>
 			{children}
 		</LogContext.Provider>

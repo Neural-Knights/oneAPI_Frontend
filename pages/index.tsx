@@ -3,14 +3,16 @@ import React from "react";
 import type { NextPage, GetServerSideProps } from "next";
 import { getSession } from "next-auth/react";
 import Header from "@/components/Dashboard_Header/Header";
+import DHome from "@/components/Dashboard_Home/DHome";
 
 const Home: NextPage = ({ session }: any) => {
 	if (session) {
 		return (
-			<div className="bg-0-Dprimary h-[100vh]">
+			<div className="bg-0-Dprimary h-[100vh] font-popsans">
 				<Navbar />
-				<div className="">
+				<div className="flex h-[88vh]">
 					<Header />
+					<DHome />
 				</div>
 			</div>
 		);
