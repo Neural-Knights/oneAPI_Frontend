@@ -32,18 +32,21 @@ const Chatbot = () => {
 	const { name, image, messages, setMessages } = useLog() as log;
 	const [inputValue, setInputValue] = useState<string>("");
 
-	useState(() => {
-		const initialMessage = [
-			{
-				content: "Hi! I'm Neural knights Bot 👋",
-				sender: "bot",
-			},
-		];
-		setMessages(initialMessage);
+	// useState(() => {
+	// 	const initialMessage = [
+	// 		{
+	// 			content: "Hi! I'm Neural knights Bot 👋",
+	// 			sender: "bot",
+	// 		},
+	// 	];
+	// 	setMessages(initialMessage);
+	// }, []);
+
+	useEffect(() => {
 		if (transcript) {
 			setInputValue(transcript);
 		}
-	}, []);
+	}, [transcript]);
 
 	const handleInputChange = (e: any) => {
 		e.preventDefault();
