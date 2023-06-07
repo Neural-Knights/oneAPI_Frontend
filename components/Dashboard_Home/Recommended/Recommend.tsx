@@ -88,9 +88,9 @@ const Recommend = () => {
 		setRecammandData(final);
 	};
 
-	// useEffect(() => {
-	// 	getRecommendation();
-	// }, []);
+	useEffect(() => {
+		getRecommendation();
+	}, []);
 
 	return (
 		<div className="ml-8 mt-3">

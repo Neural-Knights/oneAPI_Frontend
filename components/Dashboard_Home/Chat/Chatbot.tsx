@@ -40,13 +40,10 @@ const Chatbot = () => {
 			},
 		];
 		setMessages(initialMessage);
-	}, []);
-
-	useEffect(() => {
 		if (transcript) {
 			setInputValue(transcript);
 		}
-	}, [transcript]);
+	}, []);
 
 	const handleInputChange = (e: any) => {
 		e.preventDefault();
