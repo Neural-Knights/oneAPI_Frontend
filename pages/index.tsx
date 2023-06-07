@@ -4,17 +4,28 @@ import type { NextPage, GetServerSideProps } from "next";
 import { getSession } from "next-auth/react";
 import Header from "@/components/Dashboard_Header/Header";
 import DHome from "@/components/Dashboard_Home/DHome";
+import Head from "next/head";
 
 const Home: NextPage = ({ session }: any) => {
 	if (session) {
 		return (
-			<div className="bg-0-Dprimary h-[100vh] font-popsans">
-				<Navbar />
-				<div className="flex h-[88vh]">
-					<Header />
-					<DHome />
+			<>
+				<Head>
+					<title>Neural Knights</title>
+					<meta
+						name="description"
+						content="A Student Learning Platform By Increasing Interactivity"
+					/>
+					<link rel="icon" href="/favicon.ico" />
+				</Head>
+				<div className="bg-0-Dprimary max-h-[100vh] font-popsans">
+					<Navbar />
+					<div className="flex h-full">
+						<Header />
+						<DHome />
+					</div>
 				</div>
-			</div>
+			</>
 		);
 	} else {
 		return (

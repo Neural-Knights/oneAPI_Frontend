@@ -3,6 +3,7 @@ import React from "react";
 import Recommend from "./Recommended/Recommend";
 import Schedule from "./Schedule/Schedule";
 import Linegraph from "./Graph/Linegraph";
+import Chatbot from "./Chat/Chatbot";
 
 type name = {
 	name: string;
@@ -11,9 +12,9 @@ type name = {
 const DHome = () => {
 	const { name } = useLog() as name;
 	return (
-		<div className="bg-0-Dsecondary w-full flex space-x-4 h-[87vh] mr-3 rounded-3xl">
-			<div className="w-[30rem] h-full">
-				<div className="ml-8 mt-4 space-y-2">
+		<div className="bg-0-Dsecondary w-full flex flex-col lg:flex-row space-x-4 h-[90vh] lg:mt-[8vh] md:mt-[10vh] mr-3 rounded-3xl">
+			<div className="w-[40%] h-full">
+				<div className="ml-8 mt-4 space-y-1">
 					<h1 className="font-bold text-2xl flex space-x-2">
 						<p>Hello,</p> <p className="font-medium">{name}</p>
 						<p>👋</p>
@@ -47,10 +48,11 @@ const DHome = () => {
 							</div>
 						</div>
 					</div>
-					<div className="h-full">
+					<div className="h-[80vh]">
 						<div className="h-fit">
 							<Linegraph />
 						</div>
+						<Chatbot />
 					</div>
 				</div>
 			</div>

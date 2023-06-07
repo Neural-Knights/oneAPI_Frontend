@@ -10,6 +10,7 @@ const LogProvider = ({ children }: any) => {
 	const image = session.data?.user?.image as string;
 	const [log, setLog] = useState<number>(0);
 	const [currentUser, setCurrentUser] = useState<object>([]);
+	const [recammandData, setRecammandData] = useState<object>([]);
 	const signup = () => {
 		setLog(1);
 	};
@@ -25,6 +26,8 @@ const LogProvider = ({ children }: any) => {
 				login,
 				currentUser,
 				setCurrentUser,
+				recammandData,
+				setRecammandData,
 				name,
 				email,
 				image,

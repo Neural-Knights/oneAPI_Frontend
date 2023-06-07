@@ -49,9 +49,9 @@ const Header = () => {
 		},
 	];
 	return (
-		<aside className="flex items-center h-[85vh] w-40 -ml-1">
-			<div className="flex w-20 mx-auto flex-col items-center justify-center space-y-10 py-6">
-				<div className="space-y-32 rounded-md">
+		<aside className="flex h-[100vh] w-auto pl-6">
+			<div className="flex w-20 mx-auto flex-col items-center justify-center py-6">
+				<div className="lg:space-y-44 md:space-y-28 rounded-md md:pt-16 lg:pt-6">
 					<ul>
 						{nav.map((item: nav, i: number) => (
 							<li key={i} className="p-5">
@@ -64,8 +64,9 @@ const Header = () => {
 									<Image
 										src={item.img}
 										alt={item.name}
-										width={35}
-										height={35}
+										className="w-[24px] h-[24px] lg:w-[28px] lg:h-[28px]"
+										width={28}
+										height={28}
 									/>
 								</Link>
 							</li>
@@ -74,9 +75,15 @@ const Header = () => {
 					<div className="flex items-center justify-center">
 						<div
 							onClick={out}
-							className="flex items-center cursor-pointer justify-center rounded-md hover:opacity-100"
+							className="flex items-end cursor-pointer justify-center rounded-md hover:opacity-100"
 						>
-							<Image src="/logout.svg" alt="logout" width={35} height={35} />
+							<Image
+								src="/logout.svg"
+								alt="logout"
+								className="w-[27px] h-[27px] lg:w-[32px] lg:h-[32px]"
+								width={35}
+								height={35}
+							/>
 						</div>
 					</div>
 				</div>

@@ -5,7 +5,6 @@ import { useLog } from "@/context/Landing";
 
 interface detail {
 	name: string;
-	email: string;
 	image: string;
 }
 
@@ -16,27 +15,27 @@ const Navbar = () => {
 	const [show, setShow] = useState<boolean>(false);
 	const { image, name } = useLog() as detail;
 	return (
-		<header className="flex w-full items-center justify-between px-2">
+		<header className="flex fixed w-full items-center justify-between px-2">
 			<div className="flex items-center pl-8">
 				<Image
 					src={"/logolight.svg"}
 					alt="neural logo"
 					className=""
-					width={82}
-					height={82}
+					width={60}
+					height={60}
 				/>
 				{/* search field */}
 				<div className="ml-10 flex items-center bg-0-white rounded-3xl">
 					<input
 						type="text"
 						placeholder="Search"
-						className="bg-0-white placeholder:text-0-gray rounded-full w-64 h-10 pl-4 pr-8 py-2 outline-none"
+						className="bg-0-white placeholder:text-sm placeholder:text-0-gray rounded-full w-64 h-9 pl-4 pr-8 py-2 outline-none"
 					/>
 					<Image
 						src="/search.svg"
 						alt="search"
-						width={20}
-						height={20}
+						width={18}
+						height={18}
 						className="relative -left-4"
 					/>
 				</div>
@@ -50,15 +49,15 @@ const Navbar = () => {
 					<Image
 						src={typeof image == undefined ? "/logolight.svg" : image}
 						alt={typeof name == undefined ? "neural logo" : name}
-						className="w-10 h-10 rounded-full ml-5"
+						className="w-8 h-8 rounded-full ml-5"
 						width={60}
 						height={60}
 					/>
 					<Image
 						src="/arrow.svg"
 						alt="arrow"
-						width={20}
-						height={20}
+						width={16}
+						height={16}
 						className="mr-4"
 					/>
 				</button>

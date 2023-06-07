@@ -29,15 +29,6 @@ export default async function handler(req: any, res: any) {
 		} else {
 			return res.status(201).json({ message: "Registration done", newUser });
 		}
-		// Users.create(
-		// 	{ name, email, password: hashPass },
-		// 	function (err: string, data: any) {
-		// 		if (err) return res.status(404).json({ err });
-		// 		res
-		// 			.status(201)
-		// 			.json({ status: true, user: data, message: "Registration done" });
-		// 	}
-		// );
 	} else {
 		res
 			.status(500)
