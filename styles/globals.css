@@ -25,3 +25,7 @@
 ::-webkit-scrollbar-thumb:hover {
 	background: #7655ff;
 }
+
+.itemtoright {
+	justify-content: end;
+}

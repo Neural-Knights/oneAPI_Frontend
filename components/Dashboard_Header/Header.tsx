@@ -4,6 +4,7 @@ import Link from "next/link";
 import { NextRouter, useRouter } from "next/router";
 import React from "react";
 
+// Type for navigation item
 type nav = {
 	link: string;
 	img: string;
@@ -12,10 +13,14 @@ type nav = {
 
 const Header = () => {
 	const router: NextRouter = useRouter();
+
+	// Function to handle sign out
 	const out: () => void = () => {
 		signOut();
 	};
 	const { pathname } = router;
+
+	// Navigation items
 	const nav = [
 		{
 			link: "/",
@@ -73,6 +78,7 @@ const Header = () => {
 						))}
 					</ul>
 					<div className="flex items-center justify-center">
+						{/* Sign Out Button */}
 						<div
 							onClick={out}
 							className="flex items-end cursor-pointer justify-center rounded-md hover:opacity-100"

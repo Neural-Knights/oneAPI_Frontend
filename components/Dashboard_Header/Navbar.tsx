@@ -40,6 +40,8 @@ const Navbar = () => {
 					/>
 				</div>
 			</div>
+
+			{/* User Profile and Menu */}
 			<div className="pr-8">
 				<button
 					type="button"

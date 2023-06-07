@@ -11,6 +11,7 @@ const LogProvider = ({ children }: any) => {
 	const [log, setLog] = useState<number>(0);
 	const [currentUser, setCurrentUser] = useState<object>([]);
 	const [recammandData, setRecammandData] = useState<object>([]);
+	const [messages, setMessages] = useState<object>([]);
 	const signup = () => {
 		setLog(1);
 	};
@@ -24,6 +25,8 @@ const LogProvider = ({ children }: any) => {
 				setLog,
 				signup,
 				login,
+				messages,
+				setMessages,
 				currentUser,
 				setCurrentUser,
 				recammandData,

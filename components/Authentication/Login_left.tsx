@@ -7,13 +7,16 @@ import { useFormik } from "formik";
 import { signIn } from "next-auth/react";
 import { Toaster } from "react-hot-toast";
 
+// Interface for the login component
 interface loginn {
 	signup: () => void;
 }
 
 const Login_left = () => {
+	// State for controlling the display of the toast
 	const [click, setClick] = useState<boolean>(true);
 	const router = useRouter();
+	// Formik for handling form state and validation
 	const formik = useFormik({
 		initialValues: {
 			email: "",
@@ -21,6 +24,7 @@ const Login_left = () => {
 		},
 		validate: loginvalid,
 		onSubmit: async (values: any) => {
+			// Signing in using NextAuth credentials provider
 			const status: any = await signIn("credentials", {
 				redirect: false,
 				email: values.email as string,
@@ -28,21 +32,29 @@ const Login_left = () => {
 				callbackUrl: "/",
 			});
 			if (status.ok) {
+				// Redirecting to the homepage after successful login
 				router.push(status.url);
 			}
 		},
 	});
+
+	// Function for handling Google authentication
 	const handleGoogleAuth = async () => {
 		signIn("google", {
 			callbackUrl: "/",
 		});
 	};
+
+	// Function for handling Twitter authentication
 	const handleTwitterAuth = async () => {
 		signIn("twitter", {
 			callbackUrl: "/",
 		});
 	};
+
+	// Accessing the signup function from the context
 	const { signup } = useLog() as loginn;
+
 	return (
 		<div className="font-popsans m-auto">
 			{!click && (
@@ -86,6 +98,7 @@ const Login_left = () => {
 					<h3 className="font-semibold lg:text-xl text-gray-800">
 						Email Address
 					</h3>
+					{/* Input field for email */}
 					<input
 						type="email"
 						onClick={() => setClick(false)}
@@ -95,6 +108,7 @@ const Login_left = () => {
 				</div>
 				<div className="space-y-1">
 					<h3 className="font-semibold lg:text-xl text-gray-800">Password</h3>
+					{/* Input field for password */}
 					<input
 						type="password"
 						onClick={() => setClick(false)}
@@ -103,6 +117,7 @@ const Login_left = () => {
 					/>
 				</div>
 				<div className="border-2 border-black w-full bg-0-black text-0-white p-2 rounded-3xl text-center">
+					{/* Login button */}
 					<button
 						onClick={() => setClick(false)}
 						type="submit"
@@ -112,6 +127,7 @@ const Login_left = () => {
 					</button>
 				</div>
 			</form>
+			{/* Sign up link */}
 			<div className="text-lg flex justify-center mt-3">
 				Create an account?{" "}
 				<p

@@ -51,6 +51,8 @@ const Signup_left = () => {
 	};
 	return (
 		<div className="font-popsans m-auto">
+			{/* Toaster */}
+
 			{((regformik.errors.name && regformik.touched.name) ||
 				(regformik.errors.email && regformik.touched.email) ||
 				(regformik.errors.password && regformik.touched.password)) &&
@@ -63,12 +65,14 @@ const Signup_left = () => {
 			) : (
 				<></>
 			)}
+			{/* Title */}
 			<h2 className="lg:font-bold lg:text-6xl font-black text-[2rem] lg:mx-0 mx-auto lg:mt-0 mt-12 w-max">
 				Get Started Now
 			</h2>
 			<p className="lg:text-xl text-base lg:my-2 mx-auto lg:mx-0 text-center lg:text-left font-light lg:ml-2">
 				Enter your credentials to access your account
 			</p>
+			{/* Social Sign Up Buttons */}
 			<div className="flex lg:flex-row flex-col mx-4 lg:mx-0 justify-between lg:my-4 my-6">
 				<div
 					onClick={handleGoogleAuth}
@@ -92,6 +96,8 @@ const Signup_left = () => {
 				height={50}
 				className="flex justify-center items-center lg:mx-auto mx-4 w-[-webkit-fill-available] lg:w-auto opacity-80 my-3 lg:my-2"
 			/>
+
+			{/* Registration Form */}
 			<form
 				className="space-y-4 mx-4 lg:mx-0"
 				onSubmit={regformik.handleSubmit}
@@ -137,6 +143,8 @@ const Signup_left = () => {
 						}`}
 					/>
 				</div>
+
+				{/* Terms and Privacy Checkbox */}
 				<div className="space-x-3 flex items-center ml-6">
 					<input
 						type="checkbox"
@@ -157,6 +165,8 @@ const Signup_left = () => {
 					Sign Up
 				</button>
 			</form>
+
+			{/* Login Link */}
 			<div className="text-lg flex justify-center mt-3">
 				Already have an account?{" "}
 				<p
