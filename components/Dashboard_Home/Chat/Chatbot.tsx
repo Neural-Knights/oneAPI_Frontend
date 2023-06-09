@@ -1,4 +1,5 @@
 import { useLog } from "@/context/Landing";
+import axios from "axios";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import SpeechRecognition, {
@@ -31,6 +32,7 @@ const Chatbot = () => {
 	} = useSpeechRecognition();
 	const { name, image, messages, setMessages } = useLog() as log;
 	const [inputValue, setInputValue] = useState<string>("");
+	const [currentMessage, setCurrentMessage] = useState<string>("");
 
 	// useState(() => {
 	// 	const initialMessage = [
@@ -59,8 +61,9 @@ const Chatbot = () => {
 				content: inputValue,
 				sender: "user",
 			};
-
+			setCurrentMessage(inputValue);
 			setMessages((prevMessages) => [...prevMessages, newMessage]);
+			chatbotResponse();
 			setInputValue("");
 		}
 	};
@@ -72,6 +75,18 @@ const Chatbot = () => {
 		handleSubmit();
 		resetTranscript();
 		setInputValue("");
+	};
+
+	const chatbotResponse = async () => {
+		const response = await axios.post("/api/chatbot", {
+			text: currentMessage,
+		});
+		const newMessage = {
+			content: response.data.response,
+			sender: "bot",
+		};
+
+		setMessages((prevMessages) => [...prevMessages, newMessage]);
 	};
 
 	return (
@@ -197,8 +212,11 @@ const Chatbot = () => {
 					/>
 					<div className="absolute right-0 items-center inset-y-0 hidden sm:flex">
 						<button
-							type="button"
+							type="submit"
 							onClick={handleSubmit}
+							onKeyDownCapture={(e: any) =>
+								e.key === "Enter" ? handleSubmit() : null
+							}
 							className="inline-flex items-center justify-center rounded-full px-2 py-2 transition duration-500 ease-in-out text-white bg-0-Dprimary hover:bg-blue-400 focus:outline-none"
 						>
 							<svg

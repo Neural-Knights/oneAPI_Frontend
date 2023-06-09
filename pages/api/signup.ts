@@ -19,7 +19,6 @@ export default async function handler(req: any, res: any) {
 
 		// checking dublicate users
 		const check = await Users.findOne({ email });
-		console.log(check);
 		if (check) return res.status(422).json({ message: "User Already Exists" });
 		const hashPass: string = await hash(password, 12);
 		const newUser = new Users({ name, email, password: hashPass });

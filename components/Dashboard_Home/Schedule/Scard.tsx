@@ -12,9 +12,15 @@ type detail = {
 const Scard = ({ img, title, teacher_name, teacher_img, time }: detail) => {
 	return (
 		<div className="flex space-x-4 bg-white w-[96%] rounded-3xl">
-			<Image src={img} alt="image cards" width={115} height={95} />
+			<Image
+				src={img}
+				alt="image cards"
+				width={115}
+				height={95}
+				className="w-[115px] h-[95px] object-cover rounded-2xl"
+			/>
 			<div className="flex flex-col p-2">
-				<h2 className="font-black text-lg">{title}</h2>
+				<h2 className="font-black text-lg truncate max-w-[15rem]">{title}</h2>
 				<div className="flex space-x-4 mt-2 items-center">
 					<Image
 						src={teacher_img}
