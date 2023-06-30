@@ -54,9 +54,9 @@ const Header = () => {
 		},
 	];
 	return (
-		<aside className="flex h-[100vh] w-auto pl-6">
-			<div className="flex w-20 mx-auto flex-col items-center justify-center py-6">
-				<div className="lg:space-y-44 md:space-y-28 rounded-md md:pt-16 lg:pt-6">
+		<aside className="flex h-[100vh] w-auto">
+			<div className="flex w-16 mt-4 mx-auto flex-col items-center justify-center py-6">
+				<div className="lg:space-y-40 md:space-y-28 rounded-md md:pt-16 lg:pt-6">
 					<ul>
 						{nav.map((item: nav, i: number) => (
 							<li key={i} className="p-5">
@@ -86,9 +86,9 @@ const Header = () => {
 							<Image
 								src="/logout.svg"
 								alt="logout"
-								className="w-[27px] h-[27px] lg:w-[32px] lg:h-[32px]"
-								width={35}
-								height={35}
+								className="w-[27px] h-[27px] lg:w-[28px] lg:h-[28px]"
+								width={28}
+								height={28}
 							/>
 						</div>
 					</div>

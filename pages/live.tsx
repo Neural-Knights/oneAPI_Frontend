@@ -1,7 +1,7 @@
 import Meet from "@/components/Live_Meeting/Meet";
 import React from "react";
 
-const meet = () => {
+const live = () => {
 	return (
 		<div>
 			<Meet />
@@ -9,4 +9,4 @@ const meet = () => {
 	);
 };
 
-export default meet;
+export default live;

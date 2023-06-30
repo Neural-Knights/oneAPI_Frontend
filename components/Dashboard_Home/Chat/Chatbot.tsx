@@ -32,8 +32,6 @@ const Chatbot = () => {
 	} = useSpeechRecognition();
 	const { name, image, messages, setMessages } = useLog() as log;
 	const [inputValue, setInputValue] = useState<string>("");
-	const [currentMessage, setCurrentMessage] = useState<string>("");
-
 	// useState(() => {
 	// 	const initialMessage = [
 	// 		{
@@ -61,9 +59,8 @@ const Chatbot = () => {
 				content: inputValue,
 				sender: "user",
 			};
-			setCurrentMessage(inputValue);
+			chatbotResponse(newMessage.content);
 			setMessages((prevMessages) => [...prevMessages, newMessage]);
-			chatbotResponse();
 			setInputValue("");
 		}
 	};
@@ -77,9 +74,9 @@ const Chatbot = () => {
 		setInputValue("");
 	};
 
-	const chatbotResponse = async () => {
+	const chatbotResponse = async (current: string) => {
 		const response = await axios.post("/api/chatbot", {
-			text: currentMessage,
+			text: current,
 		});
 		const newMessage = {
 			content: response.data.response,
@@ -90,7 +87,7 @@ const Chatbot = () => {
 	};
 
 	return (
-		<div className="flex-1 p-2 sm:p-6 justify-between h-[50vh] flex flex-col">
+		<div className="flex-1 p-2 sm:p-6 justify-between h-[45vh] flex flex-col">
 			<div className="flex sm:items-center justify-between py-3 border-b-2 border-gray-200">
 				<div className="relative flex items-center space-x-4">
 					<div className="relative">
@@ -108,7 +105,7 @@ const Chatbot = () => {
 							width="40"
 							height="40"
 							alt=""
-							className="w-8 sm:w-14 h-8 sm:h-14 rounded-full"
+							className="w-8 sm:w-10 h-8 sm:h-10 rounded-full"
 						/>
 					</div>
 					<div className="flex flex-col leading-tight">
@@ -126,7 +123,6 @@ const Chatbot = () => {
 							className="inline-flex items-center justify-center rounded-full h-12 w-12 transition duration-500 ease-in-out text-gray-500 hover:bg-gray-300 focus:outline-none"
 						>
 							<svg
-								xmlns="http://www.w3.org/2000/svg"
 								className="h-6 w-6 text-gray-600"
 								fill="none"
 								viewBox="0 0 24 24"

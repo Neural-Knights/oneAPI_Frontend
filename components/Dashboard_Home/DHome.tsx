@@ -12,7 +12,7 @@ type name = {
 const DHome = () => {
 	const { name } = useLog() as name;
 	return (
-		<div className="bg-0-Dsecondary w-full flex flex-col lg:flex-row space-x-4 h-[90vh] lg:mt-[8vh] md:mt-[10vh] mr-3 rounded-3xl">
+		<div className="bg-0-Dsecondary overflow-hidden w-full flex flex-col lg:flex-row space-x-4 h-[90vh] lg:mt-[8vh] md:mt-[10vh] mr-3 rounded-3xl">
 			<div className="w-[40%] h-full">
 				<div className="ml-8 mt-4 space-y-1">
 					<h1 className="font-bold text-2xl flex space-x-2">

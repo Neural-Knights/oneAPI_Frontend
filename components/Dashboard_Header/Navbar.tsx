@@ -16,7 +16,7 @@ const Navbar = () => {
 	const { image, name } = useLog() as detail;
 	return (
 		<header className="flex fixed w-full items-center justify-between px-2">
-			<div className="flex items-center pl-8">
+			<div className="flex items-center">
 				<Image
 					src={"/logolight.svg"}
 					alt="neural logo"
