@@ -32,11 +32,11 @@ const Header = () => {
 			img: "/resources.svg",
 			name: "Resources",
 		},
-		{
-			link: "/community",
-			img: "/community.svg",
-			name: "Community",
-		},
+		// {
+		// 	link: "/community",
+		// 	img: "/community.svg",
+		// 	name: "Community",
+		// },
 		{
 			link: "/live",
 			img: "/live.svg",
